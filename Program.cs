@@ -21,8 +21,12 @@ namespace TestLog
             ConfigureNLog();
 
             Logger logger = LogManager.GetCurrentClassLogger();
-            logger.Info("Check the AWS Console CloudWatch Logs console in us-west-2");
+            logger.Error("Check the AWS Console CloudWatch Logs console in us-west-2");
             logger.Info("to see messages in the log streams for the");
+            logger.Trace("trace test");
+            logger.Debug("trace test");
+            logger.Warn("Warn test");
+            logger.Fatal("Fatal test");
         }
 
         private static void ConfigureNLog()
@@ -39,12 +43,15 @@ namespace TestLog
                 LogGroup = "testGroup",
                 Region = "us-west-2",
                 Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss.fff} [${level:uppercase=true}] ${message} ${exception:format=tostring}",
-                LogStreamNamePrefix = ""
+                LogStreamNamePrefix = "",
+                DisableLogGroupCreation = false
+                // BatchPushInterval = 3 // the default is 3, configurable
             };
             config.AddTarget("aws", awsTarget);
 
+            // Fatal, Error, Warn, Info, Trace
             config.LoggingRules.Add(new LoggingRule("*", LogLevel.Info, consoleTarget));
-            config.LoggingRules.Add(new LoggingRule("*", LogLevel.Debug, awsTarget));
+            config.LoggingRules.Add(new LoggingRule("*", LogLevel.Info, awsTarget));
 
             LogManager.Configuration = config;
         }
