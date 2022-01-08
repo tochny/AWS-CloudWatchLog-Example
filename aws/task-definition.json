@@ -2,7 +2,7 @@
     "containerDefinitions": [
       {
         "name": "test",
-        "image": "172755610134.dkr.ecr.us-west-2.amazonaws.com/test:latest",
+        "image": "576625574995.dkr.ecr.us-west-2.amazonaws.com/test:latest",
         "memory": 512,
         "cpu": 256,
         "essential": true
@@ -10,7 +10,7 @@
     ],
     "networkMode": "awsvpc",
     "family": "example_task_3",
-    "taskRoleArn": "arn:aws:iam::172755610134:role/ecsTaskExecutionRole",
+    "taskRoleArn": "arn:aws:iam::576625574995:role/ecsTaskExecutionRole",
     "requiresCompatibilities": [ "FARGATE" ],
     "cpu": "256",
     "memory": "512",
