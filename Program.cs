@@ -22,11 +22,13 @@ namespace TestLog
 
             Logger logger = LogManager.GetCurrentClassLogger();
             logger.Error("Check the AWS Console CloudWatch Logs console in us-west-2");
-            logger.Info("to see messages in the log streams for the");
+            logger.Info("to see messages in the log streams from the docker");
             logger.Trace("trace test");
             logger.Debug("trace test");
             logger.Warn("Warn test");
             logger.Fatal("Fatal test");
+            // Print the OS info to the console
+            Console.WriteLine(System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture);
         }
 
         private static void ConfigureNLog()
