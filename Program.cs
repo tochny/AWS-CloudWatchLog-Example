@@ -29,6 +29,11 @@ namespace TestLog
             logger.Fatal("Fatal test");
             // Print the OS info to the console
             Console.WriteLine(System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture);
+            while(true)
+            {
+                logger.Info("GOOD");
+                Thread.Sleep(1000);
+            }
         }
 
         private static void ConfigureNLog()
